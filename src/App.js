@@ -61,7 +61,6 @@ class App extends Component {
       <div> First ability: {this.state.firstAbility} </div>
       <div> Weight: {this.state.weight/10} kg</div>
       </div>
-      // <p>Weight: {this.state.pokemonFirstAbality}</p>
     )
   }
 }
