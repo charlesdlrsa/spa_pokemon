@@ -8,7 +8,7 @@ class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      isLoading: true,
+      pokemonIds: [...Array(10).keys()],
     }
   }
 
@@ -20,6 +20,10 @@ class App extends Component {
         <Pokemon id="3"/>
         <Pokemon id="4"/>
         <Pokemon id="5"/>
+        <Pokemon id="6"/>
+        <Pokemon id="7"/>
+        <Pokemon id="8"/>
+        <Pokemon id="9"/>
       </div>
     )
   }
