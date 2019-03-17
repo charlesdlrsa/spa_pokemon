@@ -4,8 +4,8 @@ import './App.css';
 
 
 class App extends Component {
-  constructor(){
-    super()
+  constructor(props){
+    super(props)
     this.state = {
       isLoading:true,
       name: "",
@@ -15,6 +15,10 @@ class App extends Component {
   }
 
   componentDidMount(){
+    this.getPokemon()
+  }
+
+  getPokemon() {
     fetch('https://pokeapi.co/api/v2/pokemon/bulbasaur', {
       method: 'GET',
     })
@@ -34,34 +38,21 @@ class App extends Component {
   }
 
   render() {
-    // return (
-    //   <div className="App">
-    //     <header className="App-header">
-    //       <img src={logo} className="App-logo" alt="logo" />
-    //       <p>
-    //         Edit <code>src/App.js</code> and save to reload.
-    //       </p>
-    //       <a
-    //         className="App-link"
-    //         href="https://reactjs.org"
-    //         target="_blank"
-    //         rel="noopener noreferrer"
-    //       >
-    //         Learn React
-    //       </a>
-    //     </header>
-    //   </div>
-    // );
     if(this.state.isLoading){
+      return(
+        <div></div>
+      )
     }
-    return(
-      <div className="App">
-      <div> Name: {this.state.name} </div>
-      <img alt={this.state.name} src={this.state.picFront} width="200px"/>
-      <div> First ability: {this.state.firstAbility} </div>
-      <div> Weight: {this.state.weight/10} kg</div>
-      </div>
-    )
+    else{
+      return(
+        <div className="App">
+        <div> Name: {this.state.name} </div>
+        <img alt={this.state.name} src={this.state.picFront} width="200px"/>
+        <div> First ability: {this.state.firstAbility} </div>
+        <div> Weight: {this.state.weight/10} kg</div>
+        </div>
+      )
+    }
   }
 }
 
