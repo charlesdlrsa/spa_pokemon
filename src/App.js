@@ -1,58 +1,27 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import Pokemon from './Pokemon/Pokemon';
 
 
 class App extends Component {
-  constructor(props){
+  constructor(props) {
     super(props)
     this.state = {
-      isLoading:true,
-      name: "",
-      firstAbility: "",
-      weight: "",
+      isLoading: true,
     }
-  }
-
-  componentDidMount(){
-    this.getPokemon()
-  }
-
-  getPokemon() {
-    fetch('https://pokeapi.co/api/v2/pokemon/bulbasaur', {
-      method: 'GET',
-    })
-    .then(response => response.json())
-    .then((data) => {
-      this.setState({
-        isLoading: false,
-        name: data.name,
-        picFront: data.sprites.front_default,
-        firstAbility: data.abilities[0].ability.name,
-        weight: data.weight,
-      })
-    })
-    .catch((error) => {
-      console.error(error);
-    })
   }
 
   render() {
-    if(this.state.isLoading){
-      return(
-        <div></div>
-      )
-    }
-    else{
-      return(
-        <div className="App">
-        <div> Name: {this.state.name} </div>
-        <img alt={this.state.name} src={this.state.picFront} width="200px"/>
-        <div> First ability: {this.state.firstAbility} </div>
-        <div> Weight: {this.state.weight/10} kg</div>
-        </div>
-      )
-    }
+    return(
+      <div className="App">
+        <Pokemon id="1"/>
+        <Pokemon id="2"/>
+        <Pokemon id="3"/>
+        <Pokemon id="4"/>
+        <Pokemon id="5"/>
+      </div>
+    )
   }
 }
 
