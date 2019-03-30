@@ -1,14 +1,16 @@
 import React, { Component } from 'react';
-import '../App.css';
+import { getFirstAbility, convertPoundsToKilograms } from './Pokemon_service.js';
+import { PokemonBox } from './Pokemon_style.js'
 
-class Pokemon extends Component {
+export class Pokemon extends Component {
   constructor(props) {
     super(props)
     this.state = {
       isLoading: true,
-      name: "",
-      firstAbility: "",
-      weight: "",
+      name: '',
+      picFront: null,
+      firstAbility: '',
+      weight: null,
     }
   }
 
@@ -21,13 +23,13 @@ class Pokemon extends Component {
       method: 'GET',
     })
     .then(response => response.json())
-    .then((data) => {
+    .then((pokemon) => {
       this.setState({
         isLoading: false,
-        name: data.name,
-        picFront: data.sprites.front_default,
-        firstAbility: data.abilities[0].ability.name,
-        weight: data.weight,
+        name: pokemon.name,
+        picFront: pokemon.sprites.front_default,
+        firstAbility: getFirstAbility(pokemon),
+        weight: convertPoundsToKilograms(pokemon),
       })
     })
     .catch((error) => {
@@ -36,19 +38,16 @@ class Pokemon extends Component {
   }
 
   render() {
-    if(this.state.isLoading){
+    if(this.state.isLoading) {
+      return null
+    } else {
       return(
-        <div></div>
-      )
-    }
-    else{
-      return(
-        <div className="App">
-        <div> Name: {this.state.name} </div>
-        <img alt={this.state.name} src={this.state.picFront} width="200px"/>
-        <div> First ability: {this.state.firstAbility} </div>
-        <div> Weight: {this.state.weight/10} kg</div>
-        </div>
+        <PokemonBox>
+        <h1> {this.state.name[0].toUpperCase() + this.state.name.slice(1)} </h1>
+        <img alt={this.state.name} src={this.state.picFront} width="150px"/>
+        <p> Attack: {this.state.firstAbility} </p>
+        <p> Weight: {this.state.weight} kg</p>
+        </PokemonBox>
       )
     }
   }
