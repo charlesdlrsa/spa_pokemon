@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { getFirstAbility, convertPoundsToKilograms } from './Pokemon_service.js';
-import { PokemonBox } from './Pokemon_style.js'
+import { PokemonBox } from './Pokemon_style.js';
+import Avatar from '@material-ui/core/Avatar';
 
 export class Pokemon extends Component {
   constructor(props) {
@@ -14,11 +15,7 @@ export class Pokemon extends Component {
     }
   }
 
-  componentDidMount(){
-    this.getPokemon()
-  }
-
-  getPokemon() {
+  componentDidMount() {
     fetch('https://pokeapi.co/api/v2/pokemon/' + this.props.id, {
       method: 'GET',
     })
@@ -42,6 +39,7 @@ export class Pokemon extends Component {
       return null
     } else {
       return(
+        // <Avatar alt={this.state.name} src={this.state.picFront} style={{width: 60, heigth: 60}}/>
         <PokemonBox>
         <h1> {this.state.name[0].toUpperCase() + this.state.name.slice(1)} </h1>
         <img alt={this.state.name} src={this.state.picFront} width="150px"/>
