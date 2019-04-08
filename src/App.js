@@ -35,7 +35,7 @@ class App extends Component {
         {pokemons}
       </AppBox>
       <Drawer open={this.state.drawer} onClose={this.closeDrawer}>
-        <div tabIndex={0} role="button" onClick={this.closeDrawer} onKeyDown={this.closeDrawer}>
+        <div tabIndex={1} role="button" onClick={this.closeDrawer} onKeyDown={this.closeDrawer}>
           <Pokemon key={this.state.idPokemonChosen} id={this.state.idPokemonChosen}/>
         </div>
       </Drawer>
