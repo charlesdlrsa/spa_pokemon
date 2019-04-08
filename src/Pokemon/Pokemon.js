@@ -37,17 +37,15 @@ export class Pokemon extends Component {
   render() {
     if(this.state.isLoading) {
       return null
-    } else {
-      return(
-        // <Avatar alt={this.state.name} src={this.state.picFront} style={{width: 60, heigth: 60}}/>
-        <PokemonBox>
+    }
+    return(
+        <PokemonBox onClick={this.props.onClick}>
         <h1> {this.state.name[0].toUpperCase() + this.state.name.slice(1)} </h1>
         <img alt={this.state.name} src={this.state.picFront} width="150px"/>
         <p> Attack: {this.state.firstAbility} </p>
         <p> Weight: {this.state.weight} kg</p>
         </PokemonBox>
-      )
-    }
+    )
   }
 }
 
