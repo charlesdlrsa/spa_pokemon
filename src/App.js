@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Pokemon } from './Pokemon/Pokemon.js';
+import Pokemon from './Pokemon/Pokemon.js';
 import { AppBox } from './App_style.js';
 import Drawer from '@material-ui/core/Drawer'
 
