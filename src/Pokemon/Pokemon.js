@@ -40,10 +40,10 @@ export class Pokemon extends Component {
     }
     return(
         <PokemonBox onClick={this.props.onClick}>
-        <h1> {this.state.name[0].toUpperCase() + this.state.name.slice(1)} </h1>
-        <img alt={this.state.name} src={this.state.picFront} width="150px"/>
-        <p> Attack: {this.state.firstAbility} </p>
-        <p> Weight: {this.state.weight} kg</p>
+          <h1 style={{textTransform: 'capitalize'}}> {this.state.name} </h1>
+          <img alt={this.state.name} src={this.state.picFront} width="150px"/>
+          <p> Attack: {this.state.firstAbility} </p>
+          <p> Weight: {this.state.weight} kg</p>
         </PokemonBox>
     )
   }
