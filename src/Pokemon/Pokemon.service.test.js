@@ -1,4 +1,4 @@
-import { getFirstAbility, convertPoundsToKilograms } from './Pokemon_service.js';
+import { getFirstAbility, convertPoundsToKilograms } from './Pokemon.service.js';
 import React from 'react';
 
 const emptyPokemon = {

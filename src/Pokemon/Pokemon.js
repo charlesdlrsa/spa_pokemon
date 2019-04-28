@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import { getFirstAbility, convertPoundsToKilograms } from './Pokemon_service.js';
-import { PokemonBox } from './Pokemon_style.js';
-import Avatar from '@material-ui/core/Avatar';
+import { getFirstAbility, convertPoundsToKilograms } from './Pokemon.service.js';
+import { PokemonBox } from './Pokemon.style.js';
 
 export class Pokemon extends Component {
   constructor(props) {

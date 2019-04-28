@@ -1,30 +1,19 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import Pokemon from './Pokemon/Pokemon.js';
-import { AppBox } from './App_style.js';
+import {AppBox} from './App.style.js';
 import Drawer from '@material-ui/core/Drawer'
 
 class App extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
+  state = {
       pokemonIds: Array(31).fill(1).map((x, y) => x + y),
-      drawer: false,
-      idPokemonChosen: null,
-    }
   }
 
   openDrawer = id => {
-    this.setState({
-      drawer: true,
-      idPokemonChosen: id
-    })
+    this.props.showPokemon(id)
   }
 
   closeDrawer = () => {
-    this.setState({
-      drawer: false,
-      idPokemonChosen: null
-    })
+    this.props.hidePokemon()
   }
 
   render() {
@@ -34,9 +23,9 @@ class App extends Component {
       <AppBox>
         {pokemons}
       </AppBox>
-      <Drawer open={this.state.drawer} onClose={this.closeDrawer}>
-        <div tabIndex={1} role="button" onClick={this.closeDrawer} onKeyDown={this.closeDrawer}>
-          <Pokemon key={this.state.idPokemonChosen} id={this.state.idPokemonChosen}/>
+      <Drawer open={this.props.drawer} onClose={this.closeDrawer}>
+        <div tabIndex={0} role="button" onClick={this.closeDrawer} onKeyDown={this.closeDrawer}>
+          <Pokemon key={this.props.idPokemonChosen} id={this.props.idPokemonChosen}/>
         </div>
       </Drawer>
       </div>
@@ -44,4 +33,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default App
