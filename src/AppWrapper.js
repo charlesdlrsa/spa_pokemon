@@ -1,9 +1,13 @@
 import React from "react"
 import {Provider} from 'react-redux'
 import {Container} from "./App.wrap.js"
-import {store} from "./reducer.js"
+import configureStore from './configureStore.js'
+import rootSaga from './sagas.js'
 
-class AppWrapper extends React.Component {
+const store = configureStore()
+store.runSaga(rootSaga)
+
+export default class AppWrapper extends React.Component {
   render() {
     return (
       <Provider store={store}>
@@ -12,5 +16,3 @@ class AppWrapper extends React.Component {
     )
   };
 };
-
-export default AppWrapper

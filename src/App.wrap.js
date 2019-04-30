@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import {openDrawer, closeDrawer} from './actions.js'
 
 const mapStateToProps = (state) => {
-  return {drawer: state.drawer, idPokemonChosen: state.idPokemonChosen}
+  return {idPokemonChosen: state.idPokemonChosen}
 };
 
 const mapDispatchToProps = (dispatch) => {

@@ -1,15 +1,14 @@
-import { createStore } from 'redux'
-import {OPEN, CLOSE} from './actions.js'
+import {OPEN, CLOSE, FETCH_SUCCEEDED} from './actions.js'
 
-const drawerReducer = (state={drawer: false, idPokemonChosen: null}, action) => {
+export const drawerReducer = (state={idPokemonChosen: null}, action) => {
   switch (action.type) {
     case OPEN:
-      return {drawer: true, idPokemonChosen: action.id}
+      return {idPokemonChosen: action.id}
     case CLOSE:
-      return {drawer: false, idPokemonChosen: null}
+      return {idPokemonChosen: null}
+    case FETCH_SUCCEEDED:
+      return null
     default:
       return state
   };
 };
-
-export const store = createStore(drawerReducer);

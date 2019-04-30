@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { getFirstAbility, convertPoundsToKilograms } from './Pokemon.service.js';
 import { PokemonBox } from './Pokemon.style.js';
 
-export class Pokemon extends Component {
+export default class Pokemon extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -47,5 +47,3 @@ export class Pokemon extends Component {
     )
   }
 }
-
-export default Pokemon;
