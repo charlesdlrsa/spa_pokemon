@@ -1,10 +1,14 @@
 // Higher Order Component
 import App from "./App.js"
 import { connect } from 'react-redux'
-import {openDrawer, closeDrawer} from './actions.js'
+import {openDrawer, closeDrawer, callApiPokemon} from './actions.js'
 
 const mapStateToProps = (state) => {
-  return {idPokemonChosen: state.idPokemonChosen}
+  return {
+    pokemonIds: state.pokemonIds,
+    idPokemonChosen: state.idPokemonChosen,
+    pokemons: state.pokemons
+  }
 };
 
 const mapDispatchToProps = (dispatch) => {
@@ -14,7 +18,10 @@ const mapDispatchToProps = (dispatch) => {
     },
     hidePokemon: () => {
       dispatch(closeDrawer())
-    }
+    },
+    fetchPokemon: (id) => {
+      dispatch(callApiPokemon(id))
+    },
   }
 };
 

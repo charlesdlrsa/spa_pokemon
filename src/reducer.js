@@ -1,13 +1,17 @@
-import {OPEN, CLOSE, FETCH_SUCCEEDED} from './actions.js'
+import {OPEN, CLOSE, FETCH_SUCCEEDED, FETCH_FAILED} from './actions.js'
 
-export const drawerReducer = (state={idPokemonChosen: null}, action) => {
+export const drawerReducer = (state, action) => {
   switch (action.type) {
     case OPEN:
-      return {idPokemonChosen: action.id}
+      return {...state, idPokemonChosen: action.id}
     case CLOSE:
-      return {idPokemonChosen: null}
+      return {...state, idPokemonChosen: null}
     case FETCH_SUCCEEDED:
-      return null
+      const pokemons = state.pokemons
+      pokemons[action.pokemon.id-1] = action.pokemon
+      return {...state, pokemons: pokemons}
+    case FETCH_FAILED:
+      return {...state, error: action.error}
     default:
       return state
   };

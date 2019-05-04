@@ -18,9 +18,9 @@ export const closeDrawer = () => {
   }
 };
 
-export const savePokemon = (pokemon) => {
+export const callApiPokemon = (idPokemon) => {
   return {
-    type: FETCH_SUCCEEDED,
-    pokemon,
+    type: FETCH_REQUESTED,
+    idPokemon
   }
-}
+};

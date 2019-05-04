@@ -4,12 +4,14 @@ import {AppBox} from './App.style.js';
 import Drawer from '@material-ui/core/Drawer'
 
 export default class App extends React.Component {
-  state = {
-      pokemonIds: Array(31).fill(1).map((x, y) => x + y),
-  }
 
   render() {
-    const pokemons = this.state.pokemonIds.map(id => <Pokemon key={id} id={id} onClick={()=>this.props.showPokemon(id)}/>)
+    const pokemons = this.props.pokemonIds.map(id =>
+      <Pokemon key={id}
+               id={id}
+               pokemons={this.props.pokemons}
+               fetchPokemon={this.props.fetchPokemon}
+               onClick={()=>this.props.showPokemon(id)}/>)
     return(
       <div>
       <AppBox>

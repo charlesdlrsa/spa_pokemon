@@ -1,48 +1,23 @@
 import React from 'react';
-import { getFirstAbility, convertPoundsToKilograms } from './Pokemon.service.js';
 import { PokemonBox } from './Pokemon.style.js';
 
 export default class Pokemon extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      isLoading: true,
-      name: '',
-      picFront: null,
-      firstAbility: '',
-      weight: null,
-    }
-  }
 
-  componentDidMount() {
-    fetch('https://pokeapi.co/api/v2/pokemon/' + this.props.id, {
-      method: 'GET',
-    })
-    .then(response => response.json())
-    .then((pokemon) => {
-      this.setState({
-        isLoading: false,
-        name: pokemon.name,
-        picFront: pokemon.sprites.front_default,
-        firstAbility: getFirstAbility(pokemon),
-        weight: convertPoundsToKilograms(pokemon),
-      })
-    })
-    .catch((error) => {
-      console.error(error);
-    })
+  componentWillMount() {
+    if (this.props.pokemons[this.props.id-1] == null) {
+      this.props.fetchPokemon(this.props.id)
+    }
   }
 
   render() {
-    if(this.state.isLoading) {
-      return null
-    }
+    console.log(this.props.pokemons)
+    const pokemon = this.props.pokemons[this.props.id-1]
     return(
         <PokemonBox onClick={this.props.onClick}>
-          <h1 style={{textTransform: 'capitalize'}}> {this.state.name} </h1>
-          <img alt={this.state.name} src={this.state.picFront} width="150px"/>
-          <p> Attack: {this.state.firstAbility} </p>
-          <p> Weight: {this.state.weight} kg</p>
+          <h1 style={{textTransform: 'capitalize'}}> {pokemon.name} </h1>
+          <img alt={pokemon.name} src={pokemon.picFront} width="150px"/>
+          <p> Attack: {pokemon.firstAbility} </p>
+          <p> Weight: {pokemon.weight} kg</p>
         </PokemonBox>
     )
   }
